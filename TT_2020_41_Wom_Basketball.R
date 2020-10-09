@@ -148,7 +148,7 @@ final_table <- top_10_final %>%
     columns=3:6) %>% 
   tab_footnote(
     footnote="Seed points award a score on a 100-point scale; a No.1 seed gets 100 points, while the rest descend in proportion to the seed's expected wins during the tournament",
-    locations=cells_column_labels(columns=6))
+    locations=cells_column_labels(columns=7))
 
 gtsave(final_table,"tt_2020_week41.png")
 gtsave(final_table,"tt_2020_week41.html")

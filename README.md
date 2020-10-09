@@ -5,5 +5,6 @@ https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-10-06/
 
 original:
 https://fivethirtyeight.com/features/louisiana-tech-was-the-uconn-of-the-80s/
+
 ![](img/fivethirtyeight.png)
 

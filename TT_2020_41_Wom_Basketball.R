@@ -145,7 +145,7 @@ final_table <- top_10_final %>%
   ) %>% 
   tab_spanner(
     label="SEED POINTS PER TOURNAMENT, BY DECADE",
-    columns=2:5) %>% 
+    columns=3:6) %>% 
   tab_footnote(
     footnote="Seed points award a score on a 100-point scale; a No.1 seed gets 100 points, while the rest descend in proportion to the seed's expected wins during the tournament",
     locations=cells_column_labels(columns=6))

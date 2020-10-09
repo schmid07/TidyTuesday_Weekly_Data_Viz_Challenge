@@ -12,7 +12,6 @@ tuesdata <- tt_load(2020,week=41)
 tournament <- tuesdata$tournament %>% 
   mutate(school=as_factor(school))
 
-
 # lookup table for seed points
 seed_point_table <- 
   tribble(
@@ -38,22 +37,26 @@ seed_point_table <-
 
 # wrangling ---------------------------------------------------------------
 
+# dataset starts in 1982 and ends in 2018 so not quite 4 decades. Spans 37 years
+sample_years <- 37
+
 # seed points by decade
 seed_pts <- tournament %>% 
   left_join(seed_point_table,by="seed") %>% 
   mutate(decade=floor(year/10)*10) %>%  
   group_by(school,decade) %>% 
   summarise(total_decade_pts=sum(points)) %>% 
+  ungroup() %>% 
   mutate(decade_avg=case_when(
     decade<1990 ~ total_decade_pts/8,
     decade>2009 ~ total_decade_pts/9,
-    TRUE ~ total_decade_pts/10 )) 
+    TRUE ~ total_decade_pts/10 ))
 
 # seed points top 10 overall
 top_10_overall <- seed_pts %>% 
   group_by(school) %>% 
-  summarise(total_overall=sum(decade_avg)) %>% 
-  mutate(overall=total_overall/4) %>% 
+  summarise(total_overall=sum(total_decade_pts)) %>% 
+  mutate(overall=total_overall/sample_years) %>% 
   slice_max(overall,n=10) %>% 
   select(-total_overall) 
 
@@ -75,7 +78,6 @@ top_10_final <- seed_pts %>%
 
 
 # creating table ----------------------------------------------------------
-
 
 final_table <- top_10_final %>% 
   gt() %>% 
@@ -137,7 +139,7 @@ final_table <- top_10_final %>%
     "2000"="2000s",
     "2010"="2010s"
   ) %>% 
-  tab_source_note("TABLE: @schmid_07 | DATA: FiveThirtyEight") %>% 
+  tab_source_note("TABLE: @schmid_07 | ORIGINAL TABLE: FiveThirtyEight | DATA: NCAA") %>% 
   tab_header(md("**Which women's programs have been most successful during the NCAA tournament era?**"),
              "Seed points in NCAA Tournaments held for women's programs, by decade and overall since 1982"
   ) %>% 

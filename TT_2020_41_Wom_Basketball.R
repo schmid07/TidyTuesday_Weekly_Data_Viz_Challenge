@@ -4,13 +4,17 @@ library(gt)
 library(paletteer)
 library(webshot)
 
+webshot::install_phantomjs()
+
+# pulling in data ---------------------------------------------------------
+
 tuesdata <- tt_load(2020,week=41)
 tournament <- tuesdata$tournament %>% 
   mutate(school=as_factor(school))
 
-webshot::install_phantomjs()
 
-conv <- 
+# lookup table for seed points
+seed_point_table <- 
   tribble(
     ~seed, ~points,
     1, 	100,
@@ -31,42 +35,49 @@ conv <-
     16,	0
   )
 
-# table
-top_10 <- tournament %>% 
-  left_join(conv,by="seed") %>% 
+
+# wrangling ---------------------------------------------------------------
+
+# seed points by decade
+seed_pts <- tournament %>% 
+  left_join(seed_point_table,by="seed") %>% 
   mutate(decade=floor(year/10)*10) %>%  
   group_by(school,decade) %>% 
   summarise(total_decade_pts=sum(points)) %>% 
   mutate(decade_avg=case_when(
     decade<1990 ~ total_decade_pts/8,
     decade>2009 ~ total_decade_pts/9,
-    TRUE ~ total_decade_pts/10 )) %>% 
+    TRUE ~ total_decade_pts/10 )) 
+
+# seed points top 10 overall
+top_10_overall <- seed_pts %>% 
   group_by(school) %>% 
   summarise(total_overall=sum(decade_avg)) %>% 
   mutate(overall=total_overall/4) %>% 
   slice_max(overall,n=10) %>% 
-  select(-total_overall)
+  select(-total_overall) 
 
-pull_top_10 <- top_10 %>% 
+# pull top 10 for filter in next section
+top_10_overall_filter <- top_10_overall %>% 
   pull(school)
 
-top_10_filter <- tournament %>%
-  filter(school %in% pull_top_10) %>% 
-  left_join(conv,by="seed") %>% 
-  mutate(decade=as_factor(floor(year/10)*10)) %>%  
-  group_by(school,decade) %>% 
-  summarise(total_decade_pts=sum(points)) %>% 
-  mutate(decade_avg=total_decade_pts/10) %>%
+top_10_final <- seed_pts %>%
+  filter(school %in% top_10_overall_filter) %>%
   select(-total_decade_pts) %>% 
   pivot_wider(names_from=decade,values_from=decade_avg) %>% 
   mutate(across(dplyr::everything(),~replace_na(.x,0))) %>% 
-  left_join(top_10,by="school") %>%
+  left_join(top_10_overall,by="school") %>%
   ungroup() %>% 
   arrange(desc(overall)) %>% 
+  # below mutate adds in images to the dataset
   mutate(img=paste0("https://raw.githubusercontent.com/schmid07/TT-2020-Week-41/main/img/",school,".jpg")) %>% 
   select(school,img,everything())
 
-final_table <- top_10_filter %>% 
+
+# creating table ----------------------------------------------------------
+
+
+final_table <- top_10_final %>% 
   gt() %>% 
   text_transform(
     locations = cells_body(vars(img)),

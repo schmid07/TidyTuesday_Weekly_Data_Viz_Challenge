@@ -87,7 +87,7 @@ top_10_final <- seed_pts %>%
   # below mutate adds in images to the dataset
   mutate(img=paste0("https://raw.githubusercontent.com/schmid07/TT-2020-Week-41/main/img/",school,".jpg")) %>% 
   left_join(tournament_trophy) %>% 
-  select(school,img,total_champs,everything())
+  select(img,school,total_champs,everything())
 
 
 # creating table ----------------------------------------------------------
@@ -108,7 +108,7 @@ final_table <- top_10_final %>%
   cols_align(
     columns = vars(img),
     align = "center") %>% 
-  data_color(
+color(
     columns=vars("1980","1990","2000","2010",overall),
     colors = scales::col_numeric(
       palette = as.character(paletteer::paletteer_d("ggsci::green_material", n = 5)),
@@ -147,7 +147,7 @@ final_table <- top_10_final %>%
   cols_label(
     img="",
     school="SCHOOL",
-    total_champs="CHAMPIONSHIPS",
+    total_champs="TITLES",
     overall="OVERALL",
     "1980"="1980s",
     "1990"="1990s",

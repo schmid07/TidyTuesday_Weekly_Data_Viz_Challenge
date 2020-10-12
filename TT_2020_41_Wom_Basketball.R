@@ -12,6 +12,7 @@ tuesdata <- tt_load(2020,week=41)
 tournament <- tuesdata$tournament %>% 
   mutate(school=as_factor(school))
 
+
 # lookup table for seed points
 seed_point_table <- 
   tribble(
@@ -40,7 +41,18 @@ seed_point_table <-
 # dataset starts in 1982 and ends in 2018 so not quite 4 decades. Spans 37 years
 sample_years <- 37
 
+# adding in trophy emoji for first place
+tournament_trophy <- tournament %>% mutate(champs=case_when(
+  tourney_finish=="Champ" ~ "🏆",
+  TRUE~"")) %>% 
+  group_by(school) %>% 
+  mutate(total_champs = paste0(champs, collapse = "")) %>% 
+  ungroup() %>% 
+  distinct(school,.keep_all=TRUE) %>% 
+  select(school,total_champs)
+
 # seed points by decade
+
 seed_pts <- tournament %>% 
   left_join(seed_point_table,by="seed") %>% 
   mutate(decade=floor(year/10)*10) %>%  
@@ -74,7 +86,8 @@ top_10_final <- seed_pts %>%
   arrange(desc(overall)) %>% 
   # below mutate adds in images to the dataset
   mutate(img=paste0("https://raw.githubusercontent.com/schmid07/TT-2020-Week-41/main/img/",school,".jpg")) %>% 
-  select(school,img,everything())
+  left_join(tournament_trophy) %>% 
+  select(school,img,total_champs,everything())
 
 
 # creating table ----------------------------------------------------------
@@ -89,6 +102,7 @@ final_table <- top_10_final %>%
   cols_width(
     vars(img)~px(55),
     vars(school,overall)~(px(120)),
+    vars(total_champs)~(px(200)),
     vars("1980","1990","2000","2010")~px(95)
   ) %>% 
   cols_align(
@@ -133,6 +147,7 @@ final_table <- top_10_final %>%
   cols_label(
     img="",
     school="SCHOOL",
+    total_champs="CHAMPIONSHIPS",
     overall="OVERALL",
     "1980"="1980s",
     "1990"="1990s",
@@ -145,10 +160,10 @@ final_table <- top_10_final %>%
   ) %>% 
   tab_spanner(
     label="SEED POINTS PER TOURNAMENT, BY DECADE",
-    columns=3:6) %>% 
+    columns=4:7) %>% 
   tab_footnote(
     footnote="Seed points award a score on a 100-point scale; a No.1 seed gets 100 points, while the rest descend in proportion to the seed's expected wins during the tournament",
-    locations=cells_column_labels(columns=7))
+    locations=cells_column_labels(columns=8))
 
 gtsave(final_table,"tt_2020_week41.png")
 gtsave(final_table,"tt_2020_week41.html")

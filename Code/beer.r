@@ -102,14 +102,14 @@ plot_1 + plot_2 +
   plot_annotation(title = "Great American Beer Festival Competition",
                   subtitle = "From 2015-2020, the <b style='color:#1B9E77'>West</b> has 
                   won 771 medals, both the <b style='color:#D95F02'>North Central</b> and 
-                  <b style='color:#7570B3'>South</b> have won 171 medals, and the 
+                  <b style='color:#7570B3'>South</b> have won 271 medals, and the 
                   <b style='color:#E6AB02'>Northeast</b> has <br> won 107 medals. Colorado and 
                   Oregon are consistently in the top 5, based on total medals AND total medals
                   per capita.",
                   caption = "Visualization: Bill Schmid @schmid_07 | Source: Great American Beer Festival",
                   theme = theme(
                     plot.title = element_text(
-                      size = 50,
+                      size = 45,
                       face = 'bold',
                       family = 'BioRhyme',
                       hjust = .5,
@@ -120,7 +120,7 @@ plot_1 + plot_2 +
                       family = 'Crimson Text',
                       face = 'italic',
                       hjust = .5,
-                      size =20,
+                      size =18,
                       color="white"),
                     plot.caption = element_text(
                       size = 15,
@@ -128,4 +128,4 @@ plot_1 + plot_2 +
                       family = 'Crimson Text'),
                     plot.background = element_rect(fill = "#353531",color="NA")))
 
-ggsave("beer.png",width = 22, height = 15)
+ggsave("beer.png",width = 18, height = 10)

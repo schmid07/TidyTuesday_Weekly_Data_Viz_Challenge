@@ -4,13 +4,9 @@ library(showtext)
 library(ggtext)
 library(sysfonts)
 library(glue)
-library(treemap)
-install.packages("treemapify")
 library(treemapify)
 
 font_add_google(name="Noto Sans",family="Noto Sans")
-font_add_google(name="Poppins",family="Poppins")
-
 showtext_auto()
 
 tidy_year <- 2020
@@ -19,8 +15,6 @@ tidy_week <- 45
 tuesdata <- tt_load(tidy_year,week=tidy_week)
 
 df_ikea_orig <- tuesdata$ikea
-
-df_ikea_orig %>% distinct(item_id,category)
 
 df_ikea_count <- df_ikea_orig %>% 
   add_count(category) %>% 

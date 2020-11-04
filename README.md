@@ -4,7 +4,6 @@ This repository contains code used for [#TidyTuesday](https://github.com/rfordat
 ## 11/03/2020 Week 45 🛋️ IKEA [(code)](https://github.com/schmid07/TidyTuesday/blob/main/Code/ikea1.r)
 
 ![](plots/ikea1.png)
-\
 
 ![](plots/ikea.png)
 

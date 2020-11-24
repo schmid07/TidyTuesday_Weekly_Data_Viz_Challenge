@@ -7,6 +7,12 @@ This repository contains code used for [#TidyTuesday](https://github.com/rfordat
 
 ![](plots/ikea.png)
 
+## 10/27/2020 Week 44 🇨🇦 💨 Canadian Wind Turbines [(code)](https://github.com/schmid07/TidyTuesday/blob/main/Code/2020_44_wind_turbines.Rmd)
+
+![](plots/Ontario_Wind_Turbines.gif)
+
+![](plots/Ontario_Wind_Turbines.png)
+
 ## 10/20/2020 Week 43 🍻 Beer [(code)](https://github.com/schmid07/TidyTuesday/blob/main/Code/beer.r)
 
 ![](plots/beer.png)

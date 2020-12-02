@@ -1,0 +1,132 @@
+---
+title: "Toronto Homeless Shelters"
+author: "Bill Schmid"
+date: "12/1/2020"
+output: html_document
+---
+
+```{r loading libraries}
+library(tidyverse)
+library(tidytuesdayR)
+library(showtext)
+library(ggmap)
+library(osmdata)
+library(colorspace)
+library(gganimate)
+```
+
+```{r load data}
+tidy_year <- 2020
+tidy_week <- 49
+
+tuesdata <- tt_load(tidy_year,week=tidy_week)
+
+df_shelters_orig <- tuesdata$shelters
+
+font_add_google(name="Roboto",family="Roboto")
+showtext_auto()
+
+```
+
+Split this step out as I assumed that the mutate_geocode would have gone through each row of df_shelter_orig (115k rows).  Doing this reduces to 65 observations.
+```{r geocoding locations}
+df_shelter_locations <- df_shelters_orig %>% 
+  select(shelter_address,shelter_city) %>% 
+  mutate(full_address = glue::glue("{shelter_address}, {shelter_city}")) %>% 
+  distinct(full_address) %>% 
+  mutate_geocode(full_address)
+
+```
+
+```{r rejoin data}
+filter_date <- ymd("2018/12/31")
+
+df_shelter_join <- df_shelters_orig %>%
+  filter(occupancy_date > filter_date) %>% 
+  mutate(full_address = glue::glue("{shelter_address}, {shelter_city}")) %>% 
+  left_join(df_shelter_locations) %>% 
+  group_by(occupancy_date,shelter_name,lat,lon) %>% 
+  summarise(across(c(occupancy,capacity),sum,na.rm=TRUE)) %>% 
+  ungroup() %>% 
+  mutate(occupancy_rate = occupancy/capacity*100,
+         at_capacity = case_when(
+             occupancy_rate >= 100  ~ "yes",
+             TRUE ~ "No"),
+         occupancy_date = lubridate::date(occupancy_date)) %>% 
+  drop_na(occupancy_rate)
+
+```
+
+See here for helpful tutorial on working with OSM: https://ggplot2tutor.com/streetmaps/streetmaps/
+```{r getting maps}
+toronto_osm_map <- getbb("Toronto")
+
+toronto_osm_roads <- toronto_osm_map %>% 
+  opq() %>% 
+  add_osm_feature(key = "highway", 
+                  value = c("motorway", "primary", 
+                            "secondary", "tertiary")) %>%
+  osmdata_sf()
+
+toronto_osm_water <- toronto_osm_map %>% 
+  opq() %>%
+  add_osm_feature(key = "waterway", value = "river") %>%
+  osmdata_sf()
+```
+
+
+```{r plot}
+plot_shelter <- ggplot(df_shelter_join) +
+  geom_sf(data = toronto_osm_roads$osm_lines,
+          inherit.aes = FALSE,
+          color = "white",
+          size = .4,
+          alpha = .2) +
+  geom_sf(data = toronto_osm_water$osm_lines, 
+          fill = "#0077be", 
+          size = 1.2,
+          color = darken("#0077be")) +
+  geom_point(aes(x = lon, y = lat,
+                 fill = at_capacity,
+                 group = shelter_name),
+             size = 3,
+             alpha = .8,
+             shape = 21,
+             color = "#d3d3d3",
+             show.legend = FALSE) +
+  scale_fill_manual(values = c("#E66100","#d3d3d3"))+
+  coord_sf(xlim=c(-79.6,-79.18),
+           ylim=c(43.6,43.81),
+           expand=FALSE) +
+  transition_time(occupancy_date) +
+  labs(title = "{frame_time}",
+       subtitle = "Toronto Shelters at or above capacity",
+       caption = "Visualization: Bill Schmid @schmid_07 | Source: Open Data Toronto") +
+  theme_void() + 
+  theme(plot.title = element_text(size=20,
+                                  color = "#d3d3d3",
+                                  margin = margin(t=30)),
+        plot.margin = margin(l=15,r=15),
+        plot.subtitle = element_text(size=30,
+                                     face="bold",
+                                     color = "#E66100",
+                                     margin = margin(b=30)),
+        plot.caption = element_text(size=15,
+                                     color = "#d3d3d3"),
+        plot.background = element_rect("grey20"))
+```
+
+
+```{r animation}
+frames <- length(unique(df_shelter_join$occupancy_date))
+
+animate(plot_shelter, width = 800, height = 600, 
+        nframes=frames,fps = 6)
+
+anim_save("shelters.gif")
+
+
+
+
+```
+

@@ -13,6 +13,7 @@ library(ggmap)
 library(osmdata)
 library(colorspace)
 library(gganimate)
+library(ggtext)
 ```
 
 ```{r load data}
@@ -76,6 +77,7 @@ toronto_osm_water <- toronto_osm_map %>%
 
 
 ```{r plot}
+
 plot_shelter <- ggplot(df_shelter_join) +
   geom_sf(data = toronto_osm_roads$osm_lines,
           inherit.aes = FALSE,
@@ -100,17 +102,18 @@ plot_shelter <- ggplot(df_shelter_join) +
            expand=FALSE) +
   transition_time(occupancy_date) +
   labs(title = "{frame_time}",
-       subtitle = "Toronto Shelters at or above capacity",
+       subtitle = "Toronto shelters: \n below & <b style='color:#E66100'>above capacity</b>",
        caption = "Visualization: Bill Schmid @schmid_07 | Source: Open Data Toronto") +
   theme_void() + 
   theme(plot.title = element_text(size=20,
                                   color = "#d3d3d3",
                                   margin = margin(t=30)),
         plot.margin = margin(l=15,r=15),
-        plot.subtitle = element_text(size=30,
-                                     face="bold",
-                                     color = "#E66100",
-                                     margin = margin(b=30)),
+        plot.subtitle = element_markdown(size=30,
+                                         face="bold",
+                                         halign = 0,
+                                         color = "#d3d3d3",
+                                         margin = margin(b=30)),
         plot.caption = element_text(size=15,
                                      color = "#d3d3d3"),
         plot.background = element_rect("grey20"))
@@ -124,9 +127,6 @@ animate(plot_shelter, width = 800, height = 600,
         nframes=frames,fps = 6)
 
 anim_save("shelters.gif")
-
-
-
 
 ```
 

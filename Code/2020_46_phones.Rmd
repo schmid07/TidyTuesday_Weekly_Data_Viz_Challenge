@@ -1,0 +1,120 @@
+---
+title: "2020/46 Phones"
+author: "Bill Schmid"
+date: "11/18/2020"
+output: html_document
+---
+```{r setup, loading libraries}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(tidyverse)
+library(tidytuesdayR)
+library(showtext)
+library(gggibbous)
+library(gganimate)
+library(ggtext)
+```
+
+
+```{r setup, load data}
+tidy_year <- 2020
+tidy_week <- 46
+
+tuesdata <- tt_load(tidy_year,week=tidy_week)
+
+df_orig_mobile <- tuesdata$mobile
+df_orig_landline <- tuesdata$landline
+
+font_add_google(name = "BioRhyme", family = "BioRhyme")
+
+showtext_auto()
+```
+
+```{r wrangling}
+df_mob_land <- df_orig_mobile %>% 
+  select(code,year,mobile_subs) %>% 
+  left_join(df_orig_landline,by = c('code' = 'code', 'year' = 'year')) 
+
+df_top_6_pop_filter <- df_mob_land %>% 
+  group_by(entity) %>% 
+  filter(year == max(year)) %>% 
+  ungroup() %>% 
+  slice_max(total_pop, n=6)
+  
+df_mob_land_share <- df_mob_land %>% 
+  filter(entity %in% df_top_6_pop_filter$entity) %>% 
+  mutate(total_mob = mobile_subs * total_pop/100,
+         total_land = landline_subs * total_pop/100,
+         total_phones = total_mob + total_land,
+         mob_perc = total_mob / total_phones,
+         land_perc = 1 - mob_perc) %>% 
+  pivot_longer(
+    cols = ends_with("_perc"),
+    names_to = "group",
+    values_to = "ratio"
+  ) %>% 
+  mutate(right = group == "land_perc") 
+
+```
+
+
+```{r plot data}
+frames <- length(unique(df_mob_land_share$year))
+
+plot_moon <- df_mob_land_share %>% 
+  ggplot(aes(x=1, 
+             y=1,
+             group = entity)) +
+  geom_point(size = 85, color = "#f5f5f5") + 
+  geom_point(size = 80, color = "grey20") + 
+  geom_point(size = 75, color = "#f5f5f5") +
+  geom_point(size = 70, color = "grey20") +
+    geom_moon(
+      aes(
+        ratio = ratio, 
+        right = right, 
+        fill = group
+      ),
+      color = "transparent",
+      size = 65
+    ) +
+  facet_wrap(~entity, strip.position = "bottom") +
+  scale_fill_manual(
+      values = c("grey", "#02a9f7"),
+      guide = F
+    ) + 
+  theme_void() +
+  labs(title = '<b style="color:grey">Landline</b> and <b
+       style="color:#02a9f7">Mobile</b> Phone Subscriptions ({frame_time})',
+       subtitle = 'The below shows
+       <b style="color:grey">landline</b> and 
+       <b style="color:#02a9f7">mobile</b> subscriptions as a % of
+       total phone subscriptions <br> within the six largest countries
+       in the dataset from 1990 - 2017.',
+       caption = "Visualization: Bill Schmid @schmid_07 | Source: OurWorldInData") +
+  theme(plot.background = element_rect(fill = "grey20"),
+        plot.margin = margin(t = 75, r = 30, b = 50, l = 30),
+        plot.title = element_markdown(color = "#f5f5f5",
+                                      size = 40,
+                                      face = "bold"),
+        plot.subtitle = element_markdown(color = "#f5f5f5", 
+                                         size = 22,
+                                         halign = 0,
+                                         margin = margin(t= 15, b = 40)),
+        plot.caption = element_text(color = "#f5f5f5",
+                                    size = 15,
+                                    margin = margin(t = 40),
+                                    hjust = .5),
+        panel.spacing.y = unit(2, "lines"), 
+        strip.text = element_text(size = 35, color = '#f5f5f5', face = 'bold')) + 
+  transition_time(year) 
+
+animate(plot_moon, width = 1100, height = 800, 
+        nframes=frames, fps = 2)
+
+anim_save("phones.gif")
+
+
+```
+
+

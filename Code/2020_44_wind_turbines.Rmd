@@ -41,7 +41,7 @@ showtext_auto()
 ```
 
 Static Plot
-```{}
+```{r}
 plot_static_wind_turbine <- ggplot()+
   geom_sf(data = sf_ontario, inherit.aes = FALSE, color = darken("#2F394D"), fill = "#F2EFEA") +
   geom_hex(data=df_ontario_wind_turbines,aes(x=longitude,y=latitude),alpha=.8) +
@@ -57,12 +57,17 @@ plot_static_wind_turbine <- ggplot()+
         legend.position = c(.75,.25),
         legend.key.size = unit(1.2,"cm"),
         legend.text = element_text(size=20,face="bold"),
-        plot.caption = element_text(size=15,family = "BioRhyme"),
-        plot.title = element_text(size=35,family = "BioRhyme",
-                                  color = '#d4f1f9',
+        legend.title = element_blank(),
+        plot.caption = element_text(size=15,family = "BioRhyme",
+                                    color = "#0072B2"),
+        plot.title = element_text(size=40,family = "BioRhyme",
+                                  face = 'bold',
+                                  color = '#0072B2',
                                   hjust=.5,margin = margin(t=10,b=25))) + 
   draw_label("Southern \n Ontario",
-             size=35,
+             size=40,
+             fontface = 'bold',
+             color = '#0072B2',
              fontfamily = "BioRhyme",
              x=-77,y=47.5)
 ```
@@ -89,6 +94,7 @@ plot_gif_wind_turbine <- ggplot()+
                                 title="Wind Turbines"))+
   draw_label("Southern \n Ontario",
              size=30,
+             fontface = 'bold',
              x=-77,y=47.5)
 
 b <- plot_gif_wind_turbine +

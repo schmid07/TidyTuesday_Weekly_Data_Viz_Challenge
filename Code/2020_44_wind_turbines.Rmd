@@ -29,7 +29,7 @@ df_ontario_wind_turbines <- df_orig_wind_turbines %>%
   filter(province_territory=="Ontario") %>% 
   mutate(commission_year = parse_number(commissioning_date)) %>% 
   arrange(commission_year) %>% 
-  filter(commission_year>2005)
+  filter(commission_year>2007)
 
 sf_ontario <- ne_states("Canada", returnclass = "sf") %>% 
   filter(name == "Ontario")
@@ -41,16 +41,16 @@ showtext_auto()
 ```
 
 Static Plot
-```{r}
+```{}
 plot_static_wind_turbine <- ggplot()+
   geom_sf(data = sf_ontario, inherit.aes = FALSE, color = darken("#2F394D"), fill = "#F2EFEA") +
-  geom_hex(data=df_ontario_wind_turbines,aes(x=longitude,y=latitude),alpha=.8)+
+  geom_hex(data=df_ontario_wind_turbines,aes(x=longitude,y=latitude),alpha=.8) +
   coord_sf(xlim = c(-85,-74.3),
            ylim=c(41.7,48))+
   scale_fill_viridis_c(option="C")+
   theme_void()+
   labs(title="Wind Turbines Built (2006-2019)",
-    caption = "Visualization: Bill Schmid @schmid_07 | Source: Government of Canada")+
+    caption = "Visualization: Bill Schmid @schmid_07 | Source: Government of Canada") +
   theme(plot.margin = margin(15,0,0,15),
         plot.background = element_rect("#999999"),
         legend.direction ="horizontal",
@@ -59,10 +59,8 @@ plot_static_wind_turbine <- ggplot()+
         legend.text = element_text(size=20,face="bold"),
         plot.caption = element_text(size=15,family = "BioRhyme"),
         plot.title = element_text(size=35,family = "BioRhyme",
-                                  hjust=.5,margin = margin(t=10,b=25)),
-        legend.title = element_text(size=20,family="BioRhyme",face="bold"))+
-  guides(fill = guide_colourbar(title.position="top",
-                                title=NULL))+
+                                  color = '#d4f1f9',
+                                  hjust=.5,margin = margin(t=10,b=25))) + 
   draw_label("Southern \n Ontario",
              size=35,
              fontfamily = "BioRhyme",
@@ -103,7 +101,7 @@ b <- plot_gif_wind_turbine +
                                   margin = margin(b=10)))
 
 animate(plot = b,nframes=length(unique(df_ontario_wind_turbines$commission_year)),
-        fps = .5)
+        fps = 1)
 
 
 anim_save("Ontario_Wind_Turbines.gif")

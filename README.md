@@ -5,7 +5,7 @@ This repository contains code used for [#TidyTuesday](https://github.com/rfordat
 
 ![](plots/shelters.gif)
 
-## 11/10/2020 Week 49 📞 📱 Landline and Mobile Phone Subscriptions [(code)](https://github.com/schmid07/TidyTuesday/blob/main/Code/2020_46_phones.Rmd)
+## 11/10/2020 Week 46 📞 📱 Landline and Mobile Phone Subscriptions [(code)](https://github.com/schmid07/TidyTuesday/blob/main/Code/2020_46_phones.Rmd)
 
 ![](plots/phones.gif)
 

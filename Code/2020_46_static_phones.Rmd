@@ -149,7 +149,7 @@ plot_phones <- ggplot(df_mob_land_share %>%
 plot_world <- ggplot() +
   geom_sf(data = sf_countries, 
           aes(geometry = geometry, fill = top_10)) + 
-  scale_fill_manual(values = c('#F5F5F5', '#02a9f7')) + 
+  scale_fill_manual(values = c('#E8E8E8', '#02a9f7')) + 
   theme(legend.position = "none")
   
 ```
@@ -179,7 +179,7 @@ plot_text <- ggplot() + geom_textbox(
       <br> <br>
       The <span style = 'font-size:25pt; color:#02a9f7'>**size of the dot**</span> corresponds to the total phones per 100 people in a given country and year. In 1990, **Bangladesh, Nigeria, India, China, Indonesia**, and **Pakistan** had minimal phone adoption rates, with fewer than 1 in 100 people having either a landline or mobile subscription. From 1990 to 2017, however, phone adoption rates exploded, with these same six countries having annual subscription growth rates above 20%. **Pakistan** exemplifies this rapid growth. While they had the lowest phone subscription rate (75) in 2017, they were well above the country with the highest phone subscription rate (56) in 1990, the **United States**.   
        <br> 
-      The <span style = 'font-size:25pt'>**transparency of the lines**</span> represents the percentage of landlines and mobile phones among total phone subscriptions in a given country and year. The darker the line, the greater the percentage of landlines. **Russia, Nigeria, India**, and **Bangladesh**, had no mobile phone subscriptions in 1990, but by 2017, the situation was almost entirely reversed, with several countries having nearly 100% mobile phone subscriptions."
+      The <span style = 'font-size:25pt'>**transparency of the lines**</span> represents the percentage of landlines and mobile phones among total phone subscriptions in a given country and year. The darker the line, the greater the percentage of landlines. **Russia, Nigeria, India**, and **Bangladesh** had no mobile phone subscriptions in 1990, but by 2017, the situation was almost entirely reversed, with several countries having nearly 100% mobile phone subscriptions."
       ),
     color = "black"
   ),

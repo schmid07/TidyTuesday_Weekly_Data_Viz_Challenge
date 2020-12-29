@@ -12,9 +12,9 @@ This repository contains code used for [#TidyTuesday](https://github.com/rfordat
 
 ## 11/03/2020 Week 45 🛋️ IKEA [(code)](https://github.com/schmid07/TidyTuesday/blob/main/Code/ikea1.r)
 
-![](plots/ikea1.png)
+![](plots/2020_45_with_images.png)
 
-![](plots/ikea.png)
+![](plots/2020_45.png)
 
 ## 10/27/2020 Week 44 🇨🇦 💨 Canadian Wind Turbines [(code)](https://github.com/schmid07/TidyTuesday/blob/main/Code/2020_44_wind_turbines.Rmd)
 
@@ -24,9 +24,9 @@ This repository contains code used for [#TidyTuesday](https://github.com/rfordat
 
 ## 10/20/2020 Week 43 🍻 Beer [(code)](https://github.com/schmid07/TidyTuesday/blob/main/Code/beer.r)
 
-![](plots/beer.png)
+![](plots/2020_43.png)
 
 ## 10/06/2020 Week 41 🏀 Women's College Basketball [(code)](https://github.com/schmid07/TidyTuesday/blob/main/Code/women_bball.R)
 
-![](https://github.com/schmid07/TidyTuesday/blob/main/plots/tt_2020_week41.png)
+![](https://github.com/schmid07/TidyTuesday/blob/main/plots/2020_41.png)
 

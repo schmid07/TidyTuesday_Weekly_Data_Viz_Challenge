@@ -37,11 +37,21 @@ showtext_auto()
 
 Split this step out as I assumed that the mutate_geocode would have gone through each row of df_shelter_orig (115k rows).  Doing this reduces to 65 observations.
 ```{r geocoding locations, cache = TRUE}
-df_shelter_locations <- df_shelters_orig %>% 
-  select(shelter_address, shelter_city) %>% 
-  mutate(full_address = glue::glue("{shelter_address}, {shelter_city}")) %>% 
-  distinct(full_address) %>% 
-  mutate_geocode(full_address)
+path <- here::here("csv", "tor_shelter_addresses.csv")
+
+df_shelter_locations <- read_csv(path)
+
+# dont need to re-run this.  just use code above to read in csv file.  Purpose of code is to not have to re-run geocode each time the script is run.
+
+# df_shelter_locations <- df_shelters_orig %>% 
+#   select(shelter_address, shelter_city) %>% 
+#   mutate(full_address = glue::glue("{shelter_address}, {shelter_city}")) %>% 
+#   distinct(full_address) %>% 
+#   mutate_geocode(full_address)
+# 
+# write_csv(df_shelter_locations, here::here("csv", "tor_shelter_addresses.csv"))
+
+
 ```
 
 ```{r rejoin data}
@@ -102,15 +112,15 @@ plot_shelter <- ggplot(df_shelter_join) +
              color = "#d3d3d3",
              show.legend = FALSE) +
   scale_fill_manual(values = c("#E66100", "#d3d3d3"))+
-  coord_sf(xlim=c(-79.6, -79.18),
-           ylim=c(43.6, 43.81),
+  coord_sf(xlim = c(-79.6, -79.18),
+           ylim = c(43.6, 43.81),
            expand = FALSE) +
   transition_time(occupancy_date) +
   labs(title = "{frame_time}",
        subtitle = "Toronto shelters: below & <b style='color:#E66100'>above capacity</b>",
        caption = "Visualization: Bill Schmid @schmid_07 | Source: Open Data Toronto") +
   theme_void() + 
-  theme(plot.title = element_text(size=20,
+  theme(plot.title = element_text(size = 20,
                                   color = "#d3d3d3",
                                   margin = margin(t=30)),
         plot.margin = margin(l = 15, r = 15),
@@ -131,7 +141,10 @@ frames <- length(unique(df_shelter_join$occupancy_date))
 animate(plot_shelter, width = 800, height = 600, 
         nframes=frames, fps = 6)
 
-anim_save("shelters.gif")
+path1 <- here::here("plots", 
+                   glue::glue(tidy_year, "_", tidy_week, ".gif"))
+
+anim_save(path1)
 
 ```
 

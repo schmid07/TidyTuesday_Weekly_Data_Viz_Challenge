@@ -18,9 +18,9 @@ This repository contains code used for [#TidyTuesday](https://github.com/rfordat
 
 ## 10/27/2020 Week 44 🇨🇦 💨 Canadian Wind Turbines [(code)](https://github.com/schmid07/TidyTuesday/blob/main/Code/2020_44_wind_turbines.Rmd)
 
-![](plots/Ontario_Wind_Turbines.gif)
+![](plots/2020_44.gif)
 
-![](plots/Ontario_Wind_Turbines.png)
+![](plots/2020_44.png)
 
 ## 10/20/2020 Week 43 🍻 Beer [(code)](https://github.com/schmid07/TidyTuesday/blob/main/Code/beer.r)
 

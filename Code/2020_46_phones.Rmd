@@ -20,7 +20,7 @@ library(ggtext)
 tidy_year <- 2020
 tidy_week <- 46
 
-tuesdata <- tt_load(tidy_year,week=tidy_week)
+tuesdata <- tt_load(tidy_year, week = tidy_week)
 
 df_orig_mobile <- tuesdata$mobile
 df_orig_landline <- tuesdata$landline
@@ -112,7 +112,10 @@ plot_moon <- df_mob_land_share %>%
 animate(plot_moon, width = 1100, height = 800, 
         nframes=frames, fps = 2)
 
-anim_save("phones.gif")
+path <- here::here("plots", 
+                   glue::glue(tidy_year, "_", tidy_week, ".gif"))
+
+anim_save(path)
 
 
 ```

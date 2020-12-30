@@ -3,7 +3,7 @@ This repository contains code used for [#TidyTuesday](https://github.com/rfordat
 
 ## 12/01/2020 Week 49 🏠 Toronto Shelters [(code)](https://github.com/schmid07/TidyTuesday/blob/main/Code/2020_49_tor_shelters.Rmd)
 
-![](plots/shelters.gif)
+![](plots/2020_49.gif)
 
 ## 11/10/2020 Week 46 📞 📱 Landline and Mobile Phone Subscriptions [(code_1)](https://github.com/schmid07/TidyTuesday/blob/main/Code/2020_46_static_phones.Rmd) [(code_2)](https://github.com/schmid07/TidyTuesday/blob/main/Code/2020_46_phones.Rmd) 
 

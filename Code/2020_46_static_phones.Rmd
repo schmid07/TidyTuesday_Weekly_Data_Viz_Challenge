@@ -91,6 +91,9 @@ sf_countries <- ne_countries(returnclass = "sf") %>%
   filter(!continent %in% c("Antarctica", "Oceania", "Seven seas (open ocean)")) %>% 
   mutate(top_10 = name %in% df_ann_text$entity)
 
+df_mob_land_share_test <- df_mob_land_share %>% 
+  filter(year == 2017)
+
 ```
 
 
@@ -112,28 +115,28 @@ plot_phones <- ggplot(df_mob_land_share %>%
   geom_link2(data = df_mob_land_share, 
             aes(x = year, y = y, size = land_perc, 
                 alpha = land_perc, color = land_perc)) +
-  scale_size(range = c(.1, 10)) +
-  scale_color_gradient(low = "white", high = "black") +
-  geom_point(size = 30, color = "black") +
+  scale_size(range = c(.1, 15)) +
+  scale_color_gradient(low = "#DCDCDC", high = "black") +
+  geom_point(size = 35, color = "black") +
   new_scale(new_aes = "size") +
   geom_point(aes(size = max_perc), color = "white") + 
   geom_point(aes(size = total_phones_per), color = "#02a9f7") +
-  scale_size(range = c(1, 25)) + 
+  scale_size(range = c(1, 30)) + 
   scale_x_continuous(breaks = c(1990, 2017),
                      labels = c(1990, 2017)) +
   labs(x = NULL, y = NULL) + 
   theme_minimal(base_family = "Oswald") + 
   coord_cartesian(clip = "off") +
   annotate(
-    "curve", x = 2006, xend = 2007,
-    y = 10.4, yend = 10.7,
+    "curve", x = 2008, xend = 2009,
+    y = 10.2, yend = 10.5,
     curvature = .5,
     color = "grey18",
     size = 1) +
   geom_textbox(
     data = tibble(
-      x = 2008,
-      y = 10.8,
+      x = 2010.5,
+      y = 10.6,
       label = "Total phone CAGR (1990-2017)"),
   aes(x = x, y = y, label = label),
   width = unit(3, "inch"),
@@ -176,7 +179,7 @@ df_mob_land_per_cap <- df_mob_land_share %>%
 plot_text <- ggplot() + geom_textbox(
   data = tibble(
     x = 0,
-    y = c(.95, 0.8, .21),
+    y = c(.97, 0.85, .24),
     label = c(
       "<span style='font-size:55pt'>**Global Historical Phone Usage**</span>", 
       glue::glue("Using a dataset from **OurWorldInData.org**, the chart to the right shows the growth of total landline + mobile subscriptions and the relative decline of landlines versus mobile phones from 1990 to 2017. While the dataset included {df_mob_land_count$n[1]} countries, the data was filtered to only include the 10 most populous countries, highlighted in the map below."),
@@ -184,12 +187,12 @@ plot_text <- ggplot() + geom_textbox(
       <br> <br>
       The <span style = 'font-size:25pt; color:#02a9f7'>**size of the dot**</span> corresponds to the total phones per 100 people in a given country and year. In 1990, **Bangladesh, Nigeria, India, China, Indonesia**, and **Pakistan** had minimal phone adoption rates, with fewer than 1 in 100 people having either a landline or mobile subscription. From 1990 to 2017, however, phone adoption rates exploded, with these same six countries having annual subscription growth rates above 20%. **Pakistan** exemplifies this rapid growth. While they had the lowest phone subscription rate (75) in 2017, they were well above the country with the highest phone subscription rate (56) in 1990, the **United States**.   
        <br> 
-      The <span style = 'font-size:25pt'>**transparency and size of the lines**</span> represents the percentage of landlines and mobile phones among total phone subscriptions in a given country and year. The darker the line, the greater the percentage of landlines. **Russia, Nigeria, India**, and **Bangladesh** had no mobile phone subscriptions in 1990, but by 2017, the situation was almost entirely reversed, with several countries having nearly 100% mobile phone subscriptions."
+      The <span style = 'font-size:25pt'>**transparency and width of the lines**</span> represents the percentage of landlines and mobile phones among total phone subscriptions in a given country and year. The darker and bigger the line, the greater the percentage of landlines. **Russia, Nigeria, India**, and **Bangladesh** had no mobile phone subscriptions in 1990, but by 2017, the situation was almost entirely reversed, with only two countries (**U.S.A and Japan**) having a landline subcription rate greater than 15% of total phone subscriptions. Five countries (**Bangladesh, India, Indonesia, Nigeria**, and **Pakistan**) had landlines subscriptions rates less than 2% of total subscriptions."
       ),
     color = "black"
   ),
   aes(x = x, y = y, label = label, color = color),
-  width = unit(8, "inch"),
+  width = unit(10, "inch"),
   lineheight = 1.7,
   family = "Oswald",
   size = 7,
@@ -212,12 +215,12 @@ plot_text <- ggplot() + geom_textbox(
 # https://stackoverflow.com/questions/65208689/how-to-embed-a-map-using-the-inset-element-function-from-the-patchwork-package/65209110#65209110
 
 plot_patch <- plot_text + 
-  inset_element(plot_world, left = .1, right = .9, bottom = .48, top = .72)
+  inset_element(plot_world, left = .1, right = .9, bottom = .45, top = .8)
 
 plot_patch$patches$layout$widths  <- 1
 plot_patch$patches$layout$heights <- 1
 
-plot_patch + plot_phones + plot_layout(widths = c(.5, .5)) + 
+plot_patch + plot_phones + plot_layout(widths = c(.6, .4)) + 
   plot_annotation(
     theme = theme(plot.background = element_rect(fill = "#F2DFCE", color = NA)
     )

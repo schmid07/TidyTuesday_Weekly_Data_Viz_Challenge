@@ -14,20 +14,24 @@ This repository contains code used for [#TidyTuesday](https://github.com/rfordat
 <br>
 <br>
 <br>
-<br>
-<br>
 ![](plots/2020_46.gif)
 
 ## 11/03/2020 Week 45 🛋️ IKEA [(code)](https://github.com/schmid07/TidyTuesday/blob/main/Code/ikea1.r)
 
 ![](plots/2020_45_with_images.png)
-
+<br>
+<br>
+<br>
+<br>
 ![](plots/2020_45.png)
 
 ## 10/27/2020 Week 44 🇨🇦 💨 Canadian Wind Turbines [(code)](https://github.com/schmid07/TidyTuesday/blob/main/Code/2020_44_wind_turbines.Rmd)
 
 ![](plots/2020_44.gif)
-
+<br>
+<br>
+<br>
+<br>
 ![](plots/2020_44.png)
 
 ## 10/20/2020 Week 43 🍻 Beer [(code)](https://github.com/schmid07/TidyTuesday/blob/main/Code/beer.r)

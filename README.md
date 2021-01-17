@@ -10,6 +10,8 @@ This repository contains code used for [#TidyTuesday](https://github.com/rfordat
 ## 11/10/2020 Week 46 📞 📱 Landline and Mobile Phone Subscriptions [(code_1)](https://github.com/schmid07/TidyTuesday/blob/main/Code/2020_46_static_phones.Rmd) [(code_2)](https://github.com/schmid07/TidyTuesday/blob/main/Code/2020_46_phones.Rmd) 
 
 ![](plots/2020_46.png)
+<br>
+<br>
 ![](plots/2020_46.gif)
 
 ## 11/03/2020 Week 45 🛋️ IKEA [(code)](https://github.com/schmid07/TidyTuesday/blob/main/Code/ikea1.r)

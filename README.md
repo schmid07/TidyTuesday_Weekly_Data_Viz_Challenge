@@ -12,6 +12,10 @@ This repository contains code used for [#TidyTuesday](https://github.com/rfordat
 ![](plots/2020_46.png)
 <br>
 <br>
+<br>
+<br>
+<br>
+<br>
 ![](plots/2020_46.gif)
 
 ## 11/03/2020 Week 45 🛋️ IKEA [(code)](https://github.com/schmid07/TidyTuesday/blob/main/Code/ikea1.r)

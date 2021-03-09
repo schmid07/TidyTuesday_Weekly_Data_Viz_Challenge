@@ -244,7 +244,7 @@ tbl <- bscols(
       ),
       total_overall = colDef(
         html = TRUE,
-        name = "<p>Overall<sup> 1</sup></p>",
+        name = "<p>Overall<sup>1</sup></p>",
         class = "border-left"
       ),
       '1980' = colDef(

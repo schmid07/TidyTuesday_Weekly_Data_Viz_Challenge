@@ -20,7 +20,7 @@ This repository contains code used for [#TidyTuesday](https://github.com/rfordat
 ![](plots/2020_45.png)
 
 ## 10/27/2020 Week 44 🇨🇦 💨 Canadian Wind Turbines
-**[(Code)]**(https://github.com/schmid07/TidyTuesday/blob/main/Code/2020_44_wind_turbines.Rmd)
+[(**Code**)](https://github.com/schmid07/TidyTuesday/blob/main/Code/2020_44_wind_turbines.Rmd)
 
 <p align = "center">
 <img src = "plots/2020_44.gif" width = "900">

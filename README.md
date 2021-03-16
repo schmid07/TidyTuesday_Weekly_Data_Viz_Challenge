@@ -3,9 +3,14 @@
 # TidyTuesday - Weekly Data Viz Challenge in R
 This repository contains code used for [#TidyTuesday](https://github.com/rfordatascience/tidytuesday) visualizations.  TidyTuesday is a weekly data challenge which places an emphasis on summarizing and arranging data to make meaningful charts using `ggplot2`, `tidyr`, `dplyr`, and other tools in the `tidyverse` ecosystem. A list of visualisations is provided below:
 
-## 12/01/2020 Week 49 🏠 Toronto Shelters [(**Code**)](https://github.com/schmid07/TidyTuesday/blob/main/Code/2020_49_tor_shelters.Rmd)
+## 12/01/2020 Week 49 🏠 Toronto Shelters
+[(**Code**)](https://github.com/schmid07/TidyTuesday/blob/main/Code/2020_49_tor_shelters.Rmd)
 
 ![](plots/2020_49.gif)
+
+<p align = "center">
+<img src = "plots/2020_49.gif" width = "900">
+</p>
 
 ## 11/10/2020 Week 46 📞 📱 Landline and Mobile Phone Subscriptions [(**Code_1**)](https://github.com/schmid07/TidyTuesday/blob/main/Code/2020_46_static_phones.Rmd) [(**Code_2**)](https://github.com/schmid07/TidyTuesday/blob/main/Code/2020_46_phones.Rmd) 
 

@@ -8,10 +8,6 @@ This repository contains code used for [#TidyTuesday](https://github.com/rfordat
 
 ![](plots/2020_49.gif)
 
-<p align = "center">
-<img src = "plots/2020_49.gif" width = "900">
-</p>
-
 ## 11/10/2020 Week 46 📞 📱 Landline and Mobile Phone Subscriptions [(**Code_1**)](https://github.com/schmid07/TidyTuesday/blob/main/Code/2020_46_static_phones.Rmd) [(**Code_2**)](https://github.com/schmid07/TidyTuesday/blob/main/Code/2020_46_phones.Rmd) 
 
 ![](plots/2020_46.png)

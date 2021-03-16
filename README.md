@@ -42,9 +42,8 @@ This repository contains code used for [#TidyTuesday](https://github.com/rfordat
 [(Interactive Version)](https://schmid07.github.io/TidyTuesday_Weekly_Data_Viz_Challenge/plots/2020_41_bball_react.html)
 
 ![](https://github.com/schmid07/TidyTuesday/blob/main/plots/2020_41.png)
-
 <p align = "center">
-<img src = "http://g.recordit.co/9nNMwUNuhW.gif" width = "700">
+<img src = "plots/2020_41.png" width = "700">
 </p>
 
 

@@ -4,7 +4,7 @@
 The below plot was adapted from a
 
 <p align = "center">
-<img src = "plots/2020_41/2020_41.png" width = "900">
+<img src = "2020_41.png" width = "900">
 </p>
 
 

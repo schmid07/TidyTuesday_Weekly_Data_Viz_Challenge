@@ -38,15 +38,11 @@ This repository contains code used for [#TidyTuesday](https://github.com/rfordat
 ## 10/20/2020 Week 43 🍻 Beer
 [(**Code**)](https://github.com/schmid07/TidyTuesday/blob/main/Code/beer.r)
 
-![](plots/2020_43.png)
+![plots/2020_43/2020_43.png](https://raw.githubusercontent.com/schmid07/TidyTuesday_Weekly_Data_Viz_Challenge/main/plots/2020_43/2020_43.png)
 
 ## 10/06/2020 Week 41 🏀 Women's College Basketball 
 [(**Code**)](https://github.com/schmid07/TidyTuesday/blob/main/Code/2020_41_bball.R)
 
-<p align = "center">
-<img src = ![plots/2020_41/2020_41.png](https://raw.githubusercontent.com/schmid07/TidyTuesday_Weekly_Data_Viz_Challenge/main/plots/2020_41/2020_41.png) width = "900">
-</p>
-
-![plots/2020_41/2020_41.png](https://raw.githubusercontent.com/schmid07/TidyTuesday_Weekly_Data_Viz_Challenge/main/plots/2020_41/2020_41.png)
+![plots/2020_41/2020_41.png](https://raw.githubusercontent.com/Z3tt/TidyTuesday/master/plots/2021_09/2021_09_Employment.png)
 
 

@@ -27,15 +27,10 @@ This repository contains code used for [#TidyTuesday](https://github.com/rfordat
 ## 10/27/2020 Week 44 🇨🇦 💨 Canadian Wind Turbines
 [(**Code**)](https://github.com/schmid07/TidyTuesday/blob/main/Code/2020_44_wind_turbines.Rmd)
 
-![plots/2020_43/2020_44.png](https://raw.githubusercontent.com/schmid07/TidyTuesday_Weekly_Data_Viz_Challenge/main/plots/2020_44/2020_44.png)
+![plots/2020_44/2020_44.png](https://raw.githubusercontent.com/schmid07/TidyTuesday_Weekly_Data_Viz_Challenge/main/plots/2020_44/2020_44.png)
 
-<p align = "center">
-<img src = "plots/2020_44.gif" width = "900">
-</p>
+![plots/2020_44/2020_44.png](https://raw.githubusercontent.com/schmid07/TidyTuesday_Weekly_Data_Viz_Challenge/main/plots/2020_44/2020_44.gif)
 
-<p align = "center">
-<img src = "plots/2020_44.png" width = "900">
-</p>
 
 ## 10/20/2020 Week 43 🍻 Beer
 [(**Code**)](https://github.com/schmid07/TidyTuesday/blob/main/Code/beer.r)

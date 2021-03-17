@@ -6,15 +6,13 @@ This repository contains code used for [#TidyTuesday](https://github.com/rfordat
 ## 12/01/2020 Week 49 🏠 Toronto Shelters
 [(**Code**)](https://github.com/schmid07/TidyTuesday/blob/main/Code/2020_49_tor_shelters.Rmd)
 
-<p align = "center">
-<img src = "plots/2020_49.gif" width = "900">
-</p>
+![plots/2020_49/2020_49.png](https://raw.githubusercontent.com/schmid07/TidyTuesday_Weekly_Data_Viz_Challenge/main/plots/2020_49/2020_49.gif)
 
 ## 11/10/2020 Week 46 📞 📱 Landline and Mobile Phone Subscriptions [(**Code_1**)](https://github.com/schmid07/TidyTuesday/blob/main/Code/2020_46_static_phones.Rmd) [(**Code_2**)](https://github.com/schmid07/TidyTuesday/blob/main/Code/2020_46_phones.Rmd) 
 
-![](plots/2020_46.png)
+![plots/2020_46/2020_46.png](https://raw.githubusercontent.com/schmid07/TidyTuesday_Weekly_Data_Viz_Challenge/main/plots/2020_46/2020_46.png)
 
-![](plots/2020_46.gif)
+![plots/2020_46/2020_46.gif](https://raw.githubusercontent.com/schmid07/TidyTuesday_Weekly_Data_Viz_Challenge/main/plots/2020_46/2020_46.gif)
 
 ## 11/03/2020 Week 45 🛋️ IKEA
 
@@ -22,7 +20,7 @@ This repository contains code used for [#TidyTuesday](https://github.com/rfordat
 
 ![plots/2020_45/2020_45.png](https://raw.githubusercontent.com/schmid07/TidyTuesday_Weekly_Data_Viz_Challenge/main/plots/2020_45/2020_45.png)
 
-![plots/2020_45/2020_45.png](https://raw.githubusercontent.com/schmid07/TidyTuesday_Weekly_Data_Viz_Challenge/main/plots/2020_45/2020_45.png)
+![plots/2020_45/2020_45.png](https://raw.githubusercontent.com/schmid07/TidyTuesday_Weekly_Data_Viz_Challenge/main/plots/2020_45/2020_45_with_images.png)
 
 ## 10/27/2020 Week 44 🇨🇦 💨 Canadian Wind Turbines
 [(**Code**)](https://github.com/schmid07/TidyTuesday/blob/main/Code/2020_44_wind_turbines.Rmd)

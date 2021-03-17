@@ -10,9 +10,9 @@ This repository contains code used for [#TidyTuesday](https://github.com/rfordat
 
 ## 11/10/2020 Week 46 📞 📱 Landline and Mobile Phone Subscriptions 
 
-###[README](https://github.com/schmid07/TidyTuesday_Weekly_Data_Viz_Challenge/tree/main/plots/2020_46)
+### [README](https://github.com/schmid07/TidyTuesday_Weekly_Data_Viz_Challenge/tree/main/plots/2020_46)
 
-####[(**Code**)](https://github.com/schmid07/TidyTuesday/blob/main/Code/2020_46_static_phones.Rmd) 
+#### [(**Code**)](https://github.com/schmid07/TidyTuesday/blob/main/Code/2020_46_static_phones.Rmd) 
 
 ![plots/2020_46/2020_46.png](https://raw.githubusercontent.com/schmid07/TidyTuesday_Weekly_Data_Viz_Challenge/main/plots/2020_46/2020_46.png)
 

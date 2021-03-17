@@ -44,7 +44,7 @@ This repository contains code used for [#TidyTuesday](https://github.com/rfordat
 [(**Code**)](https://github.com/schmid07/TidyTuesday/blob/main/Code/2020_41_bball.R)
 
 <p align = "center">
-<img src = "plots/2020_41/2020_41.png" width = "900">
+<img src = "https://raw.githubusercontent.com/schmid07/TidyTuesday_Weekly_Data_Viz_Challenge/main/plots/2020_41/2020_41.png)" width = "900">
 </p>
 
 ![plots/2020_41/2020_41.png](https://raw.githubusercontent.com/schmid07/TidyTuesday_Weekly_Data_Viz_Challenge/main/plots/2020_41/2020_41.png)

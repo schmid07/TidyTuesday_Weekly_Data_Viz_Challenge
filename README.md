@@ -20,9 +20,9 @@ This repository contains code used for [#TidyTuesday](https://github.com/rfordat
 
 [(**Code**)](https://github.com/schmid07/TidyTuesday/blob/main/Code/ikea1.r)
 
-![](plots/2020_45_with_images.png)
+![plots/2020_45/2020_45.png](https://raw.githubusercontent.com/schmid07/TidyTuesday_Weekly_Data_Viz_Challenge/main/plots/2020_45/2020_45.png)
 
-![](plots/2020_45.png)
+![plots/2020_45/2020_45.png](https://raw.githubusercontent.com/schmid07/TidyTuesday_Weekly_Data_Viz_Challenge/main/plots/2020_45/2020_45.png)
 
 ## 10/27/2020 Week 44 🇨🇦 💨 Canadian Wind Turbines
 [(**Code**)](https://github.com/schmid07/TidyTuesday/blob/main/Code/2020_44_wind_turbines.Rmd)
@@ -30,8 +30,6 @@ This repository contains code used for [#TidyTuesday](https://github.com/rfordat
 ![plots/2020_44/2020_44.png](https://raw.githubusercontent.com/schmid07/TidyTuesday_Weekly_Data_Viz_Challenge/main/plots/2020_44/2020_44.png)
 
 ![plots/2020_44/2020_44.gif](https://raw.githubusercontent.com/schmid07/TidyTuesday_Weekly_Data_Viz_Challenge/main/plots/2020_44/2020_44.gif)
-
-
 
 ## 10/20/2020 Week 43 🍻 Beer
 [(**Code**)](https://github.com/schmid07/TidyTuesday/blob/main/Code/beer.r)

@@ -47,4 +47,6 @@ This repository contains code used for [#TidyTuesday](https://github.com/rfordat
 <img src = "plots/2020_41/2020_41.png" width = "900">
 </p>
 
+![plots/2020_41/2020_41.png](https://raw.githubusercontent.com/schmid07/TidyTuesday_Weekly_Data_Viz_Challenge/main/plots/2020_41/2020_41.png)
+
 

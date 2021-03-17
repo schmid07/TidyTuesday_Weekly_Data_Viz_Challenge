@@ -29,7 +29,13 @@ This repository contains code used for [#TidyTuesday](https://github.com/rfordat
 
 ![plots/2020_44/2020_44.png](https://raw.githubusercontent.com/schmid07/TidyTuesday_Weekly_Data_Viz_Challenge/main/plots/2020_44/2020_44.png)
 
+<p align = "center">
 ![plots/2020_44/2020_44.png](https://raw.githubusercontent.com/schmid07/TidyTuesday_Weekly_Data_Viz_Challenge/main/plots/2020_44/2020_44.gif)
+</p>
+
+<p align = "center">
+<img src = "plots/2020_49.gif" width = "900">
+</p>
 
 
 ## 10/20/2020 Week 43 🍻 Beer

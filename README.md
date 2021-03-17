@@ -43,6 +43,6 @@ This repository contains code used for [#TidyTuesday](https://github.com/rfordat
 ## 10/06/2020 Week 41 🏀 Women's College Basketball 
 [(**Code**)](https://github.com/schmid07/TidyTuesday/blob/main/Code/2020_41_bball.R)
 
-![plots/2020_41/2020_41.png](https://raw.githubusercontent.com/Z3tt/TidyTuesday/master/plots/2021_09/2021_09_Employment.png)
+![plots/2020_41/2020_41.png](https://raw.githubusercontent.com/schmid07/TidyTuesday_Weekly_Data_Viz_Challenge/main/plots/2020_41/2020_41.png)
 
 

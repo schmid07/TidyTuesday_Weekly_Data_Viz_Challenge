@@ -1,7 +1,7 @@
 
 
 # TidyTuesday - Weekly Data Viz Challenge in R
-This repository contains code used for [#TidyTuesday](https://github.com/rfordatascience/tidytuesday) visualizations.  TidyTuesday is a weekly data challenge which places an emphasis on summarizing and arranging data to make meaningful charts using `ggplot2`, `tidyr`, `dplyr`, and other tools in the `tidyverse` ecosystem. A list of visualisations is provided below:
+This repository contains code used for [TidyTuesday](https://github.com/rfordatascience/tidytuesday) visualizations.  TidyTuesday is a weekly data challenge which places an emphasis on *summarizing and arranging data to make meaningful charts using `ggplot2`, `tidyr`, `dplyr`, and other tools in the `tidyverse` ecosystem*, although people are allowed to create visualizations using other R packages or programming languages. See below for a list of visualizations and associated code that I've submitted on Twitter as part of TidyTuesday.
 
 ## 12/01/2020 Week 49 🏠 Toronto Shelters
 

@@ -25,8 +25,6 @@ This repository contains code used for [TidyTuesday](https://github.com/rfordata
 
 ![plots/2020_45/2020_45.png](https://raw.githubusercontent.com/schmid07/TidyTuesday_Weekly_Data_Viz_Challenge/main/plots/2020_45/2020_45.png)
 
-![plots/2020_45/2020_45.png](https://raw.githubusercontent.com/schmid07/TidyTuesday_Weekly_Data_Viz_Challenge/main/plots/2020_45/2020_45_with_images.png)
-
 ## 10/27/2020 Week 44 🇨🇦 💨 Canadian Wind Turbines
 
 ### [README](https://github.com/schmid07/TidyTuesday_Weekly_Data_Viz_Challenge/tree/main/plots/2020_44) | [**Code**](https://github.com/schmid07/TidyTuesday_Weekly_Data_Viz_Challenge/blob/main/Code/2020_44_wind_turbines.Rmd)

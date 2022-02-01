@@ -1,0 +1,192 @@
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(include = FALSE, echo = FALSE)
+```
+
+
+```{r}
+library(tidytuesdayR)
+library(tidyverse)
+library(reactable)
+library(reactablefmtr)
+library(MetBrewer)
+library(crosstalk)
+library(htmltools)
+
+```
+
+```{r}
+
+tuesdata <- tt_load('2022-01-25')
+
+df_ratings <- tuesdata$ratings
+df_details <- tuesdata$details
+
+df_combo <- df_ratings %>% 
+  left_join(df_details, by = "id") %>% 
+  mutate(bayes_average = round(bayes_average, 2)) %>% 
+  select(name, thumbnail, yearpublished, bayes_average,
+         playingtime, minage) %>% 
+  slice_max(bayes_average, n = 500)
+
+
+```
+
+```{r}
+crosstalk_data <- SharedData$new(df_combo)
+
+age_slider <- filter_slider(
+  id = "minage",
+  label = "Min. Age",
+  column = ~ minage,
+  step = 1,
+  ticks = FALSE,
+  sharedData = crosstalk_data)
+
+search_filter <- filter_select(
+  id = "game",
+  label = "Search for Games",
+  group = ~ name,
+  sharedData = crosstalk_data)
+
+playtime_slider <- filter_slider(
+  id = "playtime",
+  label = "Playing Time (Min.)",
+  column = ~ playingtime,
+  sharedData = crosstalk_data)
+
+
+```
+
+```{r}
+options(reactable.theme = reactableTheme(
+  backgroundColor = "#fafafa",
+  borderColor = "#BEBEBE",
+  style = list(
+    fontFamily = "Fira Sans Condensed"
+  ),
+  headerStyle = list(
+        "&:hover[aria-sort]" = list(background = "#E8E8E8"),
+        "&[aria-sort='ascending'], 
+        &[aria-sort='descending']" = list(background = "#C8C8C8"),
+        borderWidth = "2px"
+)))
+
+
+pal <- met.brewer(name = "VanGogh3")
+```
+
+
+```{r}
+
+tbl <- htmltools::browsable(
+  tagList(
+    tags$button(
+      tagList(fontawesome::fa("download"), "Download as CSV"),
+      onclick = "Reactable.downloadDataCSV('games_csv', 'games.csv')"
+    ),
+    tags$br(),
+    br(),
+    reactable(crosstalk_data, 
+          defaultSorted = "bayes_average",
+          elementId = "games_csv",
+          compact = TRUE,
+          showSortIcon = FALSE,
+          pagination = FALSE,
+          height = 600,
+          defaultColDef = colDef(vAlign = "center"),
+          columns = list(
+            name = colDef(
+              name = "Game",
+              minWidth = 200
+            ),
+            thumbnail = colDef(
+              cell = embed_img(df_combo, height = "60", 
+                               width = "50", 
+                               ),
+              sortable = FALSE,
+              minWidth = 60,
+              name = ""),
+            name = colDef(
+              name = "Game"
+            ),
+            yearpublished = colDef(
+              name = "Published",
+              defaultSortOrder = "desc",
+              minWidth = 60
+            ),
+            bayes_average = colDef(
+              name = "User Rating (Bayes)",
+              defaultSortOrder = "desc",
+              minWidth = 100,
+              cell = color_tiles(df_combo, pal, box_shadow = T)
+            ),
+            playingtime = colDef(
+              name = "Playing Time (Min.)",
+              defaultSortOrder = "desc",
+              cell= icon_assign(df_combo, icon = "hourglass", buckets = 5,
+                                show_values = "right")
+            ),
+            minage = colDef(
+              name = "Min. Age",
+              defaultSortOrder = "desc",
+              minWidth = 50
+            )
+            ))))
+
+
+
+```
+
+```{css, include = TRUE}
+.table-wrap {
+  box-shadow: 2px 3px 20px black;
+  font-size: 16px;
+  background-color: #fafafa;
+  font-family: Fira Sans Condensed;
+  color: #1a1a1a;
+  padding: 20px 20px 20px 20px;  
+}
+
+.table-title {
+  font-size: 40px;
+  line-height: 1.8;
+  color: #1a1a1a;
+  font-weight: 600;
+}
+
+.table-cap {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #696565
+  font-weight: 100;
+}
+
+.table-cap1 {
+  font-size: 15px;
+  color: #696565
+  font-weight: 100;
+}
+```
+
+
+```{r, include = TRUE}
+div(class = "table-wrap",
+    br(),
+    div(class = "table-title", "Top 500 Board Games"),
+    br(),
+    div(
+      bscols(
+        widths = c(4, 3, 3),
+        search_filter,
+        age_slider,
+        playtime_slider)),
+    br(),
+    tbl,
+    br(),
+    div(class = "table-cap", "Created with: reactable, reactablefmtr, tidyverse, tidytuesdayR, crosstalk, htmltools, MetBrewer"),
+    div(class = "table-cap1", "TABLE: Bill Schmid @schmid_07 * Source: Kaggle/BoardGameGeek"))
+  
+```
+

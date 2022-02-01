@@ -5,7 +5,7 @@ This repository contains code used for [TidyTuesday](https://github.com/rfordata
 
 ## 01/25/2022 Week 4 🎲 Board Games
 
-### [README](https://github.com/schmid07/TidyTuesday_Weekly_Data_Viz_Challenge/tree/main/plots/2022_04) | [**Code**](https://github.com/schmid07/TidyTuesday_Weekly_Data_Viz_Challenge/blob/main/Code/2022_04_games.Rmd)
+### [README](https://github.com/schmid07/TidyTuesday_Weekly_Data_Viz_Challenge/tree/main/plots/2022_04) | [**Code**](https://github.com/schmid07/TidyTuesday_Weekly_Data_Viz_Challenge/blob/main/Code/2022_04_games.Rmd) |
 [**Interactive Table**](https://schmid07.github.io/TidyTuesday_Weekly_Data_Viz_Challenge/plots/2022_04/2022_04_games.html)
 
 ![plots/2022_04/2022_04.png](https://raw.githubusercontent.com/schmid07/TidyTuesday_Weekly_Data_Viz_Challenge/main/plots/2022_04/2022_04.png)
